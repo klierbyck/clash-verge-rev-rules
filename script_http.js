@@ -1,7 +1,7 @@
 // Define main function (script entry)
 // function main(config, profileName) {
-//     return config;
-//   }
+//   return config;
+// }
 
 // DNS配置
 const dnsConfig = {
@@ -103,11 +103,40 @@ function main(config) {
     throw new Error("配置文件中未找到任何代理");
   }
 
-  // 覆盖原配置中DNS配置
+  // 1. 定义前置节点组名称 (必须在下面 proxy-groups 中存在)
+  const entranceGroupName = "港台日新韩-自动";
+
+  // 2. 定义静态住宅 IP 节点，并直接绑定前置代理组
+  const myStaticNode = {
+    name: "🏠 静态住宅落地",
+    type: "http",
+    server: "166.141.100.13",
+    port: 5782,
+    username: "test",
+    password: "12345678",
+    "skip-cert-verify": true,
+    // 核心改动：在这里指定 dialer-proxy，实现链式代理
+    "dialer-proxy": entranceGroupName,
+  };
+
+  // 3. 将静态住宅节点注入到 proxies 列表
+  if (!config.proxies) {
+    config.proxies = [];
+  }
+  config.proxies.push(myStaticNode);
+
+  // 4. 修改 DNS 配置
   config["dns"] = dnsConfig;
 
-  // 覆盖原配置中的代理组
+  // 5. 重新定义代理组
   config["proxy-groups"] = [
+    // 住宅 IP 专用选择组
+    {
+      ...groupBaseOption,
+      name: "🔗 链式-住宅IP",
+      type: "url-test",
+      proxies: [myStaticNode.name], // 此时连接该节点会自动经过 entranceGroupName
+    },
     {
       ...groupBaseAutoTest,
       name: "所有-自动",
@@ -189,7 +218,7 @@ function main(config) {
       proxies: [],
       "include-all": true,
       filter:
-        "(广美|美|US|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|硅谷|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)",
+        "(广美|美|USA|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|硅谷|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)",
     },
     {
       ...groupBaseOption,
@@ -204,116 +233,48 @@ function main(config) {
       ...groupBaseOption,
       name: "👽 AI",
       type: "select",
-      proxies: [
-        "港台日新韩-自动",
-        "台日新韩-自动",
-        "日新韩-自动",
-        "日本-自动",
-        "美国-自动",
-        "其他-自动",
-      ],
+      proxies: ["🔗 链式-住宅IP", "日新韩-自动", "美国-自动"],
     },
     {
       ...groupBaseOption,
       name: "📘 GitHub",
       type: "select",
-      proxies: [
-        "DIRECT",
-        "所有-自动",
-        "港台日新韩-自动",
-        "台日新韩-自动",
-        "香港-自动",
-        "台湾-自动",
-        "日本-自动",
-        "新加坡-自动",
-        "韩国-自动",
-        "美国-自动",
-        "其他-自动",
-        "REJECT",
-      ],
+      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动"],
     },
     {
       ...groupBaseOption,
       name: "🙋 Telegram",
       type: "select",
-      proxies: [
-        "DIRECT",
-        "所有-自动",
-        "港台日新韩-自动",
-        "台日新韩-自动",
-        "香港-自动",
-        "台湾-自动",
-        "日本-自动",
-        "新加坡-自动",
-        "韩国-自动",
-        "美国-自动",
-        "其他-自动",
-        "REJECT",
-      ],
+      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动"],
     },
     {
       ...groupBaseOption,
       name: "📀 流媒体",
       type: "select",
-      proxies: [
-        "DIRECT",
-        "所有-自动",
-        "港台日新韩-自动",
-        "台日新韩-自动",
-        "香港-自动",
-        "台湾-自动",
-        "日本-自动",
-        "新加坡-自动",
-        "韩国-自动",
-        "美国-自动",
-        "其他-自动",
-        "REJECT",
-      ],
+      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动"],
     },
     {
       ...groupBaseOption,
       name: "🌍 国外",
       type: "select",
       proxies: [
-        "DIRECT",
-        "所有-自动",
+        "🔗 链式-住宅IP",
         "港台日新韩-自动",
-        "台日新韩-自动",
-        "香港-自动",
-        "台湾-自动",
-        "日本-自动",
-        "新加坡-自动",
-        "韩国-自动",
+        "日新韩-自动",
         "美国-自动",
-        "其他-自动",
-        "REJECT",
       ],
     },
     {
       ...groupBaseOption,
       name: "➡️ 国内",
       type: "select",
-      proxies: [
-        "DIRECT",
-        "所有-自动",
-        "港台日新韩-自动",
-        "台日新韩-自动",
-        "香港-自动",
-        "台湾-自动",
-        "日本-自动",
-        "新加坡-自动",
-        "韩国-自动",
-        "美国-自动",
-        "其他-自动",
-        "REJECT",
-      ],
+      proxies: ["DIRECT", "所有-自动"],
     },
   ];
 
-  // 覆盖原配置中的规则
+  // 6. 覆盖原配置中的规则
   config["rule-providers"] = ruleProviders;
   config["rules"] = rules;
 
-  // 返回修改后的配置
   return config;
 }
