@@ -60,3 +60,5 @@ payload:
   - DOMAIN-SUFFIX,midjourney.com
   - DOMAIN-KEYWORD,midjourney
   - DOMAIN-REGEX,midjourney.*
+
+    - DOMAIN-KEYWORD,ping0
