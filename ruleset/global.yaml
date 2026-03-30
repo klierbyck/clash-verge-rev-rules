@@ -20,11 +20,11 @@ payload:
   - DOMAIN,asahishimbun.sc.omtrdc.net
   - DOMAIN,assets1.xboxlive.com
   - DOMAIN,assets2.xboxlive.com
-  - DOMAIN,az416426.vo.msecnd.net
-  - DOMAIN,az668014.vo.msecnd.net
-  - DOMAIN,az764295.vo.msecnd.net
+  # - DOMAIN,az416426.vo.msecnd.net
+  # - DOMAIN,az668014.vo.msecnd.net
+  # - DOMAIN,az764295.vo.msecnd.net
   - DOMAIN,azure.microsoft.com
-  - DOMAIN,azuremarketplace.microsoft.com
+  # - DOMAIN,azuremarketplace.microsoft.com
   - DOMAIN,beatselectronicsllc.tt.omtrdc.net
   - DOMAIN,beck-online.beck.de
   - DOMAIN,blizzard.nefficient.co.kr
@@ -46,7 +46,7 @@ payload:
   - DOMAIN,deutschewelle.h-cdn.com
   - DOMAIN,developer.microsoft.com
   - DOMAIN,dl.begellhouse.com
-  - DOMAIN,download.visualstudio.microsoft.com
+  # - DOMAIN,download.visualstudio.microsoft.com
   - DOMAIN,ea.tt.omtrdc.net
   - DOMAIN,elib.maruzen.co.jp
   - DOMAIN,espn.hb.omtrdc.net
@@ -81,8 +81,8 @@ payload:
   - DOMAIN,tmdb-image-prod.b-cdn.net
   - DOMAIN,translomatic.foxfortmobile.com
   - DOMAIN,vmware.tt.omtrdc.net
-  - DOMAIN,vscode.search.windows.net
-  - DOMAIN,vsmarketplacebadge.apphb.com
+  # - DOMAIN,vscode.search.windows.net
+  # - DOMAIN,vsmarketplacebadge.apphb.com
   - DOMAIN,wetv.qq.com
   - DOMAIN,widgets.stripst.com
   - DOMAIN,wrds-www.wharton.upenn.edu
@@ -22855,11 +22855,11 @@ payload:
   - DOMAIN-SUFFIX,visualarts.gr.jp
   - DOMAIN-SUFFIX,visuallearninglab.ac.uk
   - DOMAIN-SUFFIX,visualrhetoric.ac.uk
-  - DOMAIN-SUFFIX,visualstudio-staging.com
-  - DOMAIN-SUFFIX,visualstudio.co
-  - DOMAIN-SUFFIX,visualstudio.co.uk
-  - DOMAIN-SUFFIX,visualstudio.eu
-  - DOMAIN-SUFFIX,visualstudio.net
+  # - DOMAIN-SUFFIX,visualstudio-staging.com
+  # - DOMAIN-SUFFIX,visualstudio.co
+  # - DOMAIN-SUFFIX,visualstudio.co.uk
+  # - DOMAIN-SUFFIX,visualstudio.eu
+  # - DOMAIN-SUFFIX,visualstudio.net
   - DOMAIN-SUFFIX,vitae.ac.uk
   - DOMAIN-SUFFIX,vital.ac.uk
   - DOMAIN-SUFFIX,vitukali.com
@@ -23154,10 +23154,10 @@ payload:
   - DOMAIN-SUFFIX,vrsumo.com
   - DOMAIN-SUFFIX,vrv.co
   - DOMAIN-SUFFIX,vsallin.net
-  - DOMAIN-SUFFIX,vsassets.io
-  - DOMAIN-SUFFIX,vscode-cdn.net
-  - DOMAIN-SUFFIX,vscode-unpkg.net
-  - DOMAIN-SUFFIX,vscode.dev
+  # - DOMAIN-SUFFIX,vsassets.io
+  # - DOMAIN-SUFFIX,vscode-cdn.net
+  # - DOMAIN-SUFFIX,vscode-unpkg.net
+  # - DOMAIN-SUFFIX,vscode.dev
   - DOMAIN-SUFFIX,vsezoo.com
   - DOMAIN-SUFFIX,vsphere.com
   - DOMAIN-SUFFIX,vsphere.net
@@ -23520,7 +23520,7 @@ payload:
   - DOMAIN-SUFFIX,windows8.hk
   - DOMAIN-SUFFIX,windowsazure.com
   - DOMAIN-SUFFIX,windowscommunity.net
-  - DOMAIN-SUFFIX,windowsmarketplace.com
+  # - DOMAIN-SUFFIX,windowsmarketplace.com
   - DOMAIN-SUFFIX,windowsphone-int.com
   - DOMAIN-SUFFIX,windowsphone.com
   - DOMAIN-SUFFIX,windowssearch.com
