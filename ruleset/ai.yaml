@@ -45,6 +45,28 @@ payload:
   - DOMAIN-SUFFIX,x.com
   - DOMAIN-SUFFIX,x.ai
 
+  # --- Cursor ---
+  - DOMAIN,cursor.com
+  - DOMAIN,api.cursor.com
+  - DOMAIN,repo49.cursor.com
+  - DOMAIN-SUFFIX,cursor.com
+  - DOMAIN-SUFFIX,cursor.sh
+  - DOMAIN-SUFFIX,cursorapi.com
+  - DOMAIN-REGEX,cursor.*
+  - DOMAIN-KEYWORD,cursor
+
+  # --- Augment Code ---
+  - DOMAIN-SUFFIX,augmentcode.com
+  - DOMAIN-REGEX,augmentcode.*
+  - DOMAIN-KEYWORD,augmentcode
+
+  # --- VS Code (仅核心与更新) ---
+  - DOMAIN,update.code.visualstudio.com
+  - DOMAIN,vo.msecnd.net
+  - DOMAIN,main.vscode-cdn.net
+  - DOMAIN-SUFFIX,vscode-cdn.net
+  - DOMAIN-SUFFIX,vscode.dev
+
   # --- Microsoft & Copilot ---
   - DOMAIN,copilot.microsoft.com
   - DOMAIN,sydney.bing.com
@@ -67,29 +89,6 @@ payload:
   - DOMAIN-SUFFIX,gateway.icloud.com
   - DOMAIN-SUFFIX,smoot.apple.com
   - DOMAIN-KEYWORD,apple-relay
-
-  # --- Cursor & Augment (编程 AI) ---
-  - DOMAIN,cursor.com
-  - DOMAIN,api.cursor.com
-  - DOMAIN,repo49.cursor.com
-  - DOMAIN-SUFFIX,cursor.com
-  - DOMAIN-SUFFIX,cursor.sh
-  - DOMAIN-SUFFIX,cursorapi.com
-  - DOMAIN-SUFFIX,augmentcode.com
-  - DOMAIN-REGEX,cursor.*
-  - DOMAIN-REGEX,augmentcode.*
-  - DOMAIN-KEYWORD,cursor
-  - DOMAIN-KEYWORD,augmentcode
-
-  # --- VS Code & IDE Tools ---
-  - DOMAIN,main.vscode-cdn.net
-  - DOMAIN,vo.msecnd.net
-  - DOMAIN,update.code.visualstudio.com
-  - DOMAIN-SUFFIX,vscode-cdn.net
-  - DOMAIN-SUFFIX,vscode.dev
-  - DOMAIN-SUFFIX,gallerycdn.vsassets.io
-  - DOMAIN-SUFFIX,vsassets.io
-  - DOMAIN-SUFFIX,msedge.net
 
   # --- Midjourney & AI 绘图 ---
   - DOMAIN,www.midjourney.com
