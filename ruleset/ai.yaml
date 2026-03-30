@@ -1,5 +1,5 @@
 payload:
-  # --- 1. 开发工具 AI (Cursor / Augment / Dify) ---
+  # --- 开发工具 AI (Cursor / Augment / Dify) ---
   - DOMAIN,cursor.com
   - DOMAIN,api.cursor.com
   - DOMAIN,repo49.cursor.com
@@ -13,7 +13,7 @@ payload:
   - DOMAIN-KEYWORD,cursor
   - DOMAIN-KEYWORD,augmentcode
 
-  # --- 2. Apple Intelligence (苹果 AI 专项) ---
+  # --- Apple Intelligence (苹果 AI 专项) ---
   - DOMAIN,apple-relay.apple.com
   - DOMAIN,apple-relay.cloudflare.com
   - DOMAIN,guzzoni.apple.com
@@ -28,7 +28,7 @@ payload:
   - DOMAIN-SUFFIX,smoot.apple.com
   - DOMAIN-KEYWORD,apple-relay
 
-  # --- 3. OpenAI & ChatGPT ---
+  # --- OpenAI & ChatGPT ---
   - DOMAIN,chat.openai.com
   - DOMAIN,api.openai.com
   - DOMAIN-SUFFIX,chatgpt.com
@@ -47,7 +47,7 @@ payload:
   - DOMAIN-SUFFIX,sentry.io
   - DOMAIN-KEYWORD,openai
 
-  # --- 4. Midjourney & AI 绘图 ---
+  # --- Midjourney & AI 绘图 ---
   - DOMAIN,www.midjourney.com
   - DOMAIN,cdn.midjourney.com
   - DOMAIN-SUFFIX,midjourney.com
@@ -59,7 +59,7 @@ payload:
   - DOMAIN-REGEX,midjourney.*
   - DOMAIN-KEYWORD,midjourney
 
-  # --- 5. Anthropic & Claude ---
+  # --- Anthropic & Claude ---
   - DOMAIN,claude.ai
   - DOMAIN-SUFFIX,claude.ai
   - DOMAIN-SUFFIX,claude.com
@@ -70,7 +70,7 @@ payload:
   - DOMAIN-KEYWORD,anthropic
   - DOMAIN-KEYWORD,claude
 
-  # --- 6. Google (Gemini / Bard / API) ---
+  # --- Google (Gemini / Bard / API) ---
   - DOMAIN,aistudio.google.com
   - DOMAIN,gemini.google.com
   - DOMAIN,bard.google.com
@@ -81,7 +81,7 @@ payload:
   - DOMAIN-REGEX,google.*
   - DOMAIN-KEYWORD,google
 
-  # --- 7. Microsoft & Bing & 沉浸式翻译 ---
+  # --- Microsoft & Bing & 沉浸式翻译 ---
   - DOMAIN,copilot.microsoft.com
   - DOMAIN,sydney.bing.com
   - DOMAIN-SUFFIX,bing.com
@@ -90,7 +90,7 @@ payload:
   - DOMAIN-SUFFIX,edge.microsoft.com
   - DOMAIN-KEYWORD,cognitive.microsofttranslator
 
-  # --- 8. 其他国外主流 AI & 辅助服务 ---
+  # --- 其他国外主流 AI & 辅助服务 ---
   - DOMAIN,www.perplexity.ai
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,genspark.ai
@@ -117,6 +117,7 @@ payload:
   - DOMAIN-SUFFIX,deepwiki.com
   - DOMAIN-SUFFIX,linux.do
   - DOMAIN-SUFFIX,daiju.live
+  - DOMAIN-SUFFIX,modelcontextprotocol.io
 
   # --- VS Code ---
   - DOMAIN,main.vscode-cdn.net,PROXY
