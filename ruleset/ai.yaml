@@ -118,6 +118,7 @@ payload:
   - DOMAIN-SUFFIX,linux.do
   - DOMAIN-SUFFIX,daiju.live
   - DOMAIN-SUFFIX,modelcontextprotocol.io
+  - DOMAIN-SUFFIX,figma.com
 
   # --- VS Code ---
   - DOMAIN,main.vscode-cdn.net,PROXY
