@@ -61,11 +61,11 @@ payload:
   - DOMAIN-KEYWORD,augmentcode
 
   # --- VS Code (仅核心与更新) ---
-  - DOMAIN,update.code.visualstudio.com
-  - DOMAIN,vo.msecnd.net
-  - DOMAIN,main.vscode-cdn.net
-  - DOMAIN-SUFFIX,vscode-cdn.net
-  - DOMAIN-SUFFIX,vscode.dev
+  # - DOMAIN,update.code.visualstudio.com
+  # - DOMAIN,vo.msecnd.net
+  # - DOMAIN,main.vscode-cdn.net
+  # - DOMAIN-SUFFIX,vscode-cdn.net
+  # - DOMAIN-SUFFIX,vscode.dev
 
   # --- Microsoft & Copilot ---
   - DOMAIN,copilot.microsoft.com
