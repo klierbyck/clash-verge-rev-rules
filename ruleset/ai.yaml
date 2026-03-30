@@ -29,6 +29,7 @@ payload:
   - DOMAIN-SUFFIX,modelcontextprotocol.io
   - DOMAIN-SUFFIX,figma.com
   - DOMAIN-SUFFIX,framelink.ai
+  - DOMAIN-SUFFIX,opencode.ai
   
   # --- 开发工具 AI (Cursor / Augment / Dify) ---
   - DOMAIN,cursor.com
