@@ -1,4 +1,9 @@
 payload:
+  # VS Code 插件市场与静态资源 (必须直连)
+  - DOMAIN-SUFFIX,vsassets.io,DIRECT
+  - DOMAIN-SUFFIX,gallerycdn.vsassets.io,DIRECT
+  - DOMAIN-SUFFIX,vscode-cdn.net,DIRECT
+  
   # --- OpenAI & ChatGPT ---
   - DOMAIN,chat.openai.com
   - DOMAIN,api.openai.com
