@@ -1,88 +1,112 @@
 payload:
-  # --- 1. Apple Intelligence ---
-  - DOMAIN,apple-relay.apple.com,PROXY
-  - DOMAIN,apple-relay.cloudflare.com,PROXY
-  - DOMAIN,guzzoni.apple.com,PROXY
-  - DOMAIN,gspe1-ssl.ls.apple.com,PROXY
-  - DOMAIN-SUFFIX,apple-dns.net,PROXY
-  - DOMAIN-SUFFIX,apple-relay.apple.com,PROXY
-  - DOMAIN-SUFFIX,apple-relay.cloudflare.com,PROXY
-  - DOMAIN-SUFFIX,apple-relay.fastly-edge.com,PROXY
-  - DOMAIN-SUFFIX,apps.mzstatic.com,PROXY
-  - DOMAIN-SUFFIX,cp4.cloudflare.com,PROXY
-  - DOMAIN-SUFFIX,gateway.icloud.com,PROXY
-  - DOMAIN-SUFFIX,smoot.apple.com,PROXY
-  - DOMAIN-KEYWORD,apple-relay,PROXY
+  # --- 1. 开发工具 AI (Cursor / Augment / Dify) ---
+  - DOMAIN,cursor.com
+  - DOMAIN,api.cursor.com
+  - DOMAIN,repo49.cursor.com
+  - DOMAIN-SUFFIX,cursor.com
+  - DOMAIN-SUFFIX,cursor.sh
+  - DOMAIN-SUFFIX,cursorapi.com
+  - DOMAIN-SUFFIX,augmentcode.com
+  - DOMAIN-SUFFIX,difyai.com
+  - DOMAIN-REGEX,cursor.*
+  - DOMAIN-REGEX,augmentcode.*
+  - DOMAIN-KEYWORD,cursor
+  - DOMAIN-KEYWORD,augmentcode
 
-  # --- 2. OpenAI & ChatGPT (含 Cloudflare 验证) ---
-  - DOMAIN,chat.openai.com,PROXY
-  - DOMAIN,api.openai.com,PROXY
-  - DOMAIN-SUFFIX,chatgpt.com,PROXY
-  - DOMAIN-SUFFIX,openai.com,PROXY
-  - DOMAIN-SUFFIX,oaistatic.com,PROXY
-  - DOMAIN-SUFFIX,oaiusercontent.com,PROXY
-  - DOMAIN-SUFFIX,auth0.com,PROXY
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,PROXY
-  - DOMAIN-SUFFIX,client-api.arkoselabs.com,PROXY
-  - DOMAIN-SUFFIX,events.statsigapi.net,PROXY
-  - DOMAIN-SUFFIX,featuregates.org,PROXY
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,PROXY
-  - DOMAIN-SUFFIX,intercom.io,PROXY
-  - DOMAIN-SUFFIX,intercomcdn.com,PROXY
-  - DOMAIN-SUFFIX,stripe.com,PROXY
-  - DOMAIN-SUFFIX,sentry.io,PROXY
-  - DOMAIN-KEYWORD,openai,PROXY
+  # --- 2. Apple Intelligence (苹果 AI 专项) ---
+  - DOMAIN,apple-relay.apple.com
+  - DOMAIN,apple-relay.cloudflare.com
+  - DOMAIN,guzzoni.apple.com
+  - DOMAIN,gspe1-ssl.ls.apple.com
+  - DOMAIN-SUFFIX,apple-dns.net
+  - DOMAIN-SUFFIX,apple-relay.apple.com
+  - DOMAIN-SUFFIX,apple-relay.cloudflare.com
+  - DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+  - DOMAIN-SUFFIX,apps.mzstatic.com
+  - DOMAIN-SUFFIX,cp4.cloudflare.com
+  - DOMAIN-SUFFIX,gateway.icloud.com
+  - DOMAIN-SUFFIX,smoot.apple.com
+  - DOMAIN-KEYWORD,apple-relay
 
-  # --- 3. Anthropic & Claude (含短链及 MCP 域名全) ---
-  - DOMAIN,claude.ai,PROXY
-  - DOMAIN-SUFFIX,claude.ai,PROXY
-  - DOMAIN-SUFFIX,claude.com,PROXY
-  - DOMAIN-SUFFIX,clau.de,PROXY
-  - DOMAIN-SUFFIX,anthropic.com,PROXY
-  - DOMAIN-SUFFIX,claudemcpclient.com,PROXY
-  - DOMAIN-SUFFIX,claudeusercontent.com,PROXY
-  - DOMAIN-KEYWORD,anthropic,PROXY
-  - DOMAIN-KEYWORD,claude,PROXY
+  # --- 3. OpenAI & ChatGPT ---
+  - DOMAIN,chat.openai.com
+  - DOMAIN,api.openai.com
+  - DOMAIN-SUFFIX,chatgpt.com
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,oaistatic.com
+  - DOMAIN-SUFFIX,oaiusercontent.com
+  - DOMAIN-SUFFIX,auth0.com
+  - DOMAIN-SUFFIX,challenges.cloudflare.com
+  - DOMAIN-SUFFIX,client-api.arkoselabs.com
+  - DOMAIN-SUFFIX,events.statsigapi.net
+  - DOMAIN-SUFFIX,featuregates.org
+  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+  - DOMAIN-SUFFIX,intercom.io
+  - DOMAIN-SUFFIX,intercomcdn.com
+  - DOMAIN-SUFFIX,stripe.com
+  - DOMAIN-SUFFIX,sentry.io
+  - DOMAIN-KEYWORD,openai
 
-  # --- 4. Google (Gemini / Bard / API) ---
-  - DOMAIN,aistudio.google.com,PROXY
-  - DOMAIN,gemini.google.com,PROXY
-  - DOMAIN,bard.google.com,PROXY
-  - DOMAIN,makersuite.google.com,PROXY
-  - DOMAIN-SUFFIX,googleapis.com,PROXY
-  - DOMAIN-SUFFIX,googleapis.cn,PROXY
-  - DOMAIN-SUFFIX,gstatic.com,PROXY
-  - DOMAIN-REGEX,google.*,PROXY
-  - DOMAIN-KEYWORD,google,PROXY
+  # --- 4. Midjourney & AI 绘图 ---
+  - DOMAIN,www.midjourney.com
+  - DOMAIN,cdn.midjourney.com
+  - DOMAIN-SUFFIX,midjourney.com
+  - DOMAIN-SUFFIX,mj-gallery.com
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,discord.gg
+  - DOMAIN-SUFFIX,discordapp.com
+  - DOMAIN-SUFFIX,discordapp.net
+  - DOMAIN-REGEX,midjourney.*
+  - DOMAIN-KEYWORD,midjourney
 
-  # --- 5. Microsoft & Bing & Copilot ---
-  - DOMAIN,copilot.microsoft.com,PROXY
-  - DOMAIN,sydney.bing.com,PROXY
-  - DOMAIN-SUFFIX,bing.com,PROXY
-  - DOMAIN-SUFFIX,microsofttranslator.com,PROXY
-  - DOMAIN-SUFFIX,edge.microsoft.com,PROXY
-  - DOMAIN-KEYWORD,cognitive.microsofttranslator,PROXY
+  # --- 5. Anthropic & Claude ---
+  - DOMAIN,claude.ai
+  - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,claude.com
+  - DOMAIN-SUFFIX,clau.de
+  - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,claudemcpclient.com
+  - DOMAIN-SUFFIX,claudeusercontent.com
+  - DOMAIN-KEYWORD,anthropic
+  - DOMAIN-KEYWORD,claude
 
-  # --- 6. 其他主流 AI (Perplexity / Groq / Meta 等) ---
-  - DOMAIN,www.perplexity.ai,PROXY
-  - DOMAIN-SUFFIX,perplexity.ai,PROXY
-  - DOMAIN-SUFFIX,genspark.ai,PROXY
-  - DOMAIN-SUFFIX,grok.com,PROXY
-  - DOMAIN-SUFFIX,x.com,PROXY
-  - DOMAIN-SUFFIX,x.ai,PROXY
-  - DOMAIN-SUFFIX,meta.ai,PROXY
-  - DOMAIN-SUFFIX,metademolab.com,PROXY
-  - DOMAIN-SUFFIX,poe.com,PROXY
-  - DOMAIN-SUFFIX,groq.com,PROXY
-  - DOMAIN-SUFFIX,mistral.ai,PROXY
-  - DOMAIN-SUFFIX,difyai.com,PROXY
+  # --- 6. Google (Gemini / Bard / API) ---
+  - DOMAIN,aistudio.google.com
+  - DOMAIN,gemini.google.com
+  - DOMAIN,bard.google.com
+  - DOMAIN,makersuite.google.com
+  - DOMAIN-SUFFIX,googleapis.com
+  - DOMAIN-SUFFIX,googleapis.cn
+  - DOMAIN-SUFFIX,gstatic.com
+  - DOMAIN-REGEX,google.*
+  - DOMAIN-KEYWORD,google
 
-  # --- 7. 辅助底层服务 ---
-  - DOMAIN-SUFFIX,identrust.com,PROXY
-  - DOMAIN-SUFFIX,signalr.net,PROXY
-  - DOMAIN-SUFFIX,circumlunar.space,PROXY
-  - DOMAIN-SUFFIX,vulpes.one,PROXY
-  - DOMAIN-SUFFIX,mozz.us,PROXY
-  - DOMAIN-SUFFIX,conman.org,PROXY
-  - DOMAIN-SUFFIX,bortzmeyer.org,PROXY
-  - DOMAIN-KEYWORD,ping0,PROXY
+  # --- 7. Microsoft & Bing & 沉浸式翻译 ---
+  - DOMAIN,copilot.microsoft.com
+  - DOMAIN,sydney.bing.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,immersivetranslate.com
+  - DOMAIN-SUFFIX,microsofttranslator.com
+  - DOMAIN-SUFFIX,edge.microsoft.com
+  - DOMAIN-KEYWORD,cognitive.microsofttranslator
+
+  # --- 8. 其他国外主流 AI & 辅助服务 ---
+  - DOMAIN,www.perplexity.ai
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,x.com
+  - DOMAIN-SUFFIX,x.ai
+  - DOMAIN-SUFFIX,meta.ai
+  - DOMAIN-SUFFIX,metademolab.com
+  - DOMAIN-SUFFIX,poe.com
+  - DOMAIN-SUFFIX,groq.com
+  - DOMAIN-SUFFIX,mistral.ai
+  - DOMAIN-SUFFIX,identrust.com
+  - DOMAIN-SUFFIX,signalr.net
+  - DOMAIN-SUFFIX,circumlunar.space
+  - DOMAIN-SUFFIX,vulpes.one
+  - DOMAIN-SUFFIX,mozz.us
+  - DOMAIN-SUFFIX,conman.org
+  - DOMAIN-SUFFIX,bortzmeyer.org
+  - DOMAIN-KEYWORD,ping0
