@@ -63,24 +63,9 @@ payload:
 
   - DOMAIN-KEYWORD,ping0
 
-  # 1. 插件基础服务（同步、配置、官网）
+  # 沉浸式插件
   - DOMAIN-SUFFIX,immersivetranslate.com,PROXY
-  
-  # 2. 谷歌翻译 API (核心，建议全部走代理)
-  - DOMAIN-SUFFIX,translate.googleapis.com,PROXY
-  - DOMAIN-SUFFIX,translate.google.com,PROXY
-  - DOMAIN-SUFFIX,translate.google.cn,PROXY
-  
-  # 3. 如果你使用了 DeepL
-  - DOMAIN-SUFFIX,deepl.com,PROXY
-  - DOMAIN-SUFFIX,api.deepl.com,PROXY
-  
-  # 4. 如果你使用了 AI 翻译 (OpenAI / Claude / Gemini)
-  - DOMAIN-SUFFIX,openai.com,PROXY
-  - DOMAIN-SUFFIX,anthropic.com,PROXY
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,PROXY
-  
-  # 5. 如果你开启了微软 Azure/Bing 翻译
   - DOMAIN-SUFFIX,bing.com,PROXY
   - DOMAIN-SUFFIX,microsofttranslator.com,PROXY
-  - DOMAIN-SUFFIX,api.cognitive.microsofttranslator.com,PROXY
+  - DOMAIN-SUFFIX,edge.microsoft.com,PROXY
+  - DOMAIN-KEYWORD,cognitive.microsofttranslator,PROXY
