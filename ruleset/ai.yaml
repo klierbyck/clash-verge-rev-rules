@@ -110,7 +110,6 @@ payload:
   - DOMAIN-SUFFIX,conman.org
   - DOMAIN-SUFFIX,bortzmeyer.org
   - DOMAIN-KEYWORD,ping0
-  - DOMAIN-SUFFIX,lmarena.ai
   - DOMAIN-SUFFIX,arena.ai
   - DOMAIN-SUFFIX,nof1.ai
   - DOMAIN-SUFFIX,lovable.dev
