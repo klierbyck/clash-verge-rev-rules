@@ -1,4 +1,35 @@
 payload:
+  # --- 其他国外主流 AI & 辅助服务 ---
+  - DOMAIN,www.perplexity.ai
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,genspark.ai
+  - DOMAIN-SUFFIX,grok.com
+  - DOMAIN-SUFFIX,x.com
+  - DOMAIN-SUFFIX,x.ai
+  - DOMAIN-SUFFIX,meta.ai
+  - DOMAIN-SUFFIX,metademolab.com
+  - DOMAIN-SUFFIX,poe.com
+  - DOMAIN-SUFFIX,groq.com
+  - DOMAIN-SUFFIX,mistral.ai
+  - DOMAIN-SUFFIX,identrust.com
+  - DOMAIN-SUFFIX,signalr.net
+  - DOMAIN-SUFFIX,circumlunar.space
+  - DOMAIN-SUFFIX,vulpes.one
+  - DOMAIN-SUFFIX,mozz.us
+  - DOMAIN-SUFFIX,conman.org
+  - DOMAIN-SUFFIX,bortzmeyer.org
+  - DOMAIN-KEYWORD,ping0
+  - DOMAIN-SUFFIX,arena.ai
+  - DOMAIN-SUFFIX,lmarena.ai
+  - DOMAIN-SUFFIX,nof1.ai
+  - DOMAIN-SUFFIX,lovable.dev
+  - DOMAIN-SUFFIX,deepwiki.com
+  - DOMAIN-SUFFIX,linux.do
+  - DOMAIN-SUFFIX,daiju.live
+  - DOMAIN-SUFFIX,modelcontextprotocol.io
+  - DOMAIN-SUFFIX,figma.com
+  - DOMAIN-SUFFIX,framelink.ai
+  
   # --- 开发工具 AI (Cursor / Augment / Dify) ---
   - DOMAIN,cursor.com
   - DOMAIN,api.cursor.com
@@ -90,41 +121,11 @@ payload:
   - DOMAIN-SUFFIX,edge.microsoft.com
   - DOMAIN-KEYWORD,cognitive.microsofttranslator
 
-  # --- 其他国外主流 AI & 辅助服务 ---
-  - DOMAIN,www.perplexity.ai
-  - DOMAIN-SUFFIX,perplexity.ai
-  - DOMAIN-SUFFIX,genspark.ai
-  - DOMAIN-SUFFIX,grok.com
-  - DOMAIN-SUFFIX,x.com
-  - DOMAIN-SUFFIX,x.ai
-  - DOMAIN-SUFFIX,meta.ai
-  - DOMAIN-SUFFIX,metademolab.com
-  - DOMAIN-SUFFIX,poe.com
-  - DOMAIN-SUFFIX,groq.com
-  - DOMAIN-SUFFIX,mistral.ai
-  - DOMAIN-SUFFIX,identrust.com
-  - DOMAIN-SUFFIX,signalr.net
-  - DOMAIN-SUFFIX,circumlunar.space
-  - DOMAIN-SUFFIX,vulpes.one
-  - DOMAIN-SUFFIX,mozz.us
-  - DOMAIN-SUFFIX,conman.org
-  - DOMAIN-SUFFIX,bortzmeyer.org
-  - DOMAIN-KEYWORD,ping0
-  - DOMAIN-SUFFIX,arena.ai
-  - DOMAIN-SUFFIX,lmarena.ai
-  - DOMAIN-SUFFIX,nof1.ai
-  - DOMAIN-SUFFIX,lovable.dev
-  - DOMAIN-SUFFIX,deepwiki.com
-  - DOMAIN-SUFFIX,linux.do
-  - DOMAIN-SUFFIX,daiju.live
-  - DOMAIN-SUFFIX,modelcontextprotocol.io
-  - DOMAIN-SUFFIX,figma.com
-
   # --- VS Code ---
-  - DOMAIN,main.vscode-cdn.net,PROXY
-  - DOMAIN,vo.msecnd.net,PROXY
-  - DOMAIN-SUFFIX,vscode-cdn.net,PROXY
-  - DOMAIN-SUFFIX,gallerycdn.vsassets.io,PROXY
-  - DOMAIN-SUFFIX,msedge.net,PROXY
-  - DOMAIN-SUFFIX,vscode.dev,PROXY
-  - DOMAIN-SUFFIX,vsassets.io,PROXY
+  - DOMAIN,main.vscode-cdn.net
+  - DOMAIN,vo.msecnd.net
+  - DOMAIN-SUFFIX,vscode-cdn.net
+  - DOMAIN-SUFFIX,gallerycdn.vsassets.io
+  - DOMAIN-SUFFIX,msedge.net
+  - DOMAIN-SUFFIX,vscode.dev
+  - DOMAIN-SUFFIX,vsassets.io
