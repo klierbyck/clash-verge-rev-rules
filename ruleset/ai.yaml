@@ -117,3 +117,12 @@ payload:
   - DOMAIN-SUFFIX,deepwiki.com
   - DOMAIN-SUFFIX,linux.do
   - DOMAIN-SUFFIX,daiju.live
+
+  # --- VS Code ---
+  - DOMAIN,main.vscode-cdn.net,PROXY
+  - DOMAIN,vo.msecnd.net,PROXY
+  - DOMAIN-SUFFIX,vscode-cdn.net,PROXY
+  - DOMAIN-SUFFIX,gallerycdn.vsassets.io,PROXY
+  - DOMAIN-SUFFIX,msedge.net,PROXY
+  - DOMAIN-SUFFIX,vscode.dev,PROXY
+  - DOMAIN-SUFFIX,vsassets.io,PROXY
