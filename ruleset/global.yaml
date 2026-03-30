@@ -46,7 +46,7 @@ payload:
   - DOMAIN,deutschewelle.h-cdn.com
   - DOMAIN,developer.microsoft.com
   - DOMAIN,dl.begellhouse.com
-  - DOMAIN,download.visualstudio.microsoft.com
+  # - DOMAIN,download.visualstudio.microsoft.com
   - DOMAIN,ea.tt.omtrdc.net
   - DOMAIN,elib.maruzen.co.jp
   - DOMAIN,espn.hb.omtrdc.net
