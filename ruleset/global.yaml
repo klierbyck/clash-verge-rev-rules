@@ -22237,7 +22237,7 @@ payload:
   - DOMAIN-SUFFIX,unlocklimitlesslearning.com
   - DOMAIN-SUFFIX,unlocktool.net
   - DOMAIN-SUFFIX,unn.ac.uk
-  - DOMAIN-SUFFIX,unpkg.com
+  # - DOMAIN-SUFFIX,unpkg.com
   - DOMAIN-SUFFIX,unravel2.com
   - DOMAIN-SUFFIX,unraveltwo.com
   - DOMAIN-SUFFIX,unrealengine.com
