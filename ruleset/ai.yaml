@@ -120,6 +120,11 @@ payload:
   - DOMAIN-SUFFIX,immersivetranslate.com
   - DOMAIN-SUFFIX,identrust.com
   - DOMAIN-SUFFIX,signalr.net
+  - DOMAIN-SUFFIX,agnes-ai.com
+  - DOMAIN-SUFFIX,pavo-ai.work
+  - DOMAIN-KEYWORD,agnes-ai
+  - DOMAIN-KEYWORD,pavo-ai
+  
 
   # --- 社区与小众协议 (Gemini/Gopher Space) ---
   - DOMAIN-SUFFIX,circumlunar.space
