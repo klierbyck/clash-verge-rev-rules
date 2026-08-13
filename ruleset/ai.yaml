@@ -124,6 +124,7 @@ payload:
   - DOMAIN-SUFFIX,pavo-ai.work
   - DOMAIN-KEYWORD,agnes-ai
   - DOMAIN-KEYWORD,pavo-ai
+  - DOMAIN-SUFFIX,leonardo.ai
   
 
   # --- 社区与小众协议 (Gemini/Gopher Space) ---
