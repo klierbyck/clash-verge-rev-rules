@@ -2,43 +2,27 @@
 // function main(config, profileName) {
 //   return config;
 // }
-
-// DNS配置
-const dnsConfig = {
-  // 开关，true表示启用Clash的DNS处理器
-  enable: true,
-  // 主DNS服务器组，用于解析国内域名，以获取最快的CDN节点。
-  // 使用加密DNS (DoH/DoT) 可以防止ISP的DNS污染。
-  nameserver: [
-    "https://dns.alidns.com/dns-query", // 阿里DNS (DoH)
-    "https://doh.pub/dns-query", // 腾讯DNSPod (DoH)
-    "tls://223.5.5.5:853", // 阿里DNS (DoT)
-  ],
-  // 备用DNS服务器组。当主DNS解析结果不理想（如被污染或IP归属地非中国）时，
-  // Clash会使用此组DNS进行再次查询，以获取真实、无污染的海外IP。
-  fallback: [
-    "https://dns.google/dns-query", // Google DNS (DoH)
-    "https://1.1.1.1/dns-query", // Cloudflare DNS (DoH)
-    "tls://8.8.4.4:853", // Google DNS (DoT)
-  ],
-};
+// Clash Verge Rev 全局扩展脚本（Mihomo 内核）
+// 在全局扩展脚本编辑器中完整替换；先填写住宅节点的 server / username / password。
+// 使用远程规则集进行分流，未匹配流量默认直连。
+// select 组不会在连接失败时自动切换出口。
 
 // 代理组通用配置
 const groupBaseOption = {
+  // 健康检查间隔，单位为秒。
   interval: 300,
-  timeout: 1800,
-  url: "http://www.gstatic.com/generate_204",
-  lazy: true, // 分组首次被实际使用（即有网络请求通过它）时或者当用户手动触发延迟测试时，才会进行一次测速,如果分组少可以改成false或者在对应分组中覆盖此配置
+  timeout: 6000, // 健康检查超时为 6000 毫秒，避免慢连接被过早判定为不可用。
+  url: "https://www.gstatic.com/generate_204", // 通过 HTTPS 请求检测节点连通性和延迟。
+  lazy: true, // 未使用的组不持续定时测速；仍可手动触发。
   "max-failed-times": 3,
   hidden: false,
-  interval: 120, // 测速间隔，单位秒
-  tolerance: 60, //容差,它的主要作用是 防止因网络波动导致代理节点频繁切换，增加稳定性,单位是毫秒
+  tolerance: 60, // 切换容差为 60 毫秒，减少网络波动引起的频繁切换。
 };
 
 // 自动测速配置
 const groupBaseAutoTest = {
   ...groupBaseOption,
-  lazy: false,
+  lazy: true, // 普通自动组按需测速；前置组单独保持持续测速。
 };
 
 // 规则集通用配置
@@ -82,22 +66,28 @@ const ruleProviders = {
   },
 };
 
-// 规则
+// 分流规则按顺序匹配，首个命中规则决定出口。
 const rules = [
   "RULE-SET,ai,👽 AI",
   "RULE-SET,github,📘 GitHub",
   "RULE-SET,telegram,🙋 Telegram",
   "RULE-SET,media,📀 流媒体",
   "RULE-SET,global,🌍 国外",
+  // 所有未匹配流量进入国内组；此兜底规则不判断目标所属地区。
   "MATCH,➡️ 国内",
 ];
 
 // 程序入口
 function main(config) {
-  const proxyCount = config?.proxies?.length ?? 0;
+  // 检查配置类型，避免 null 或错误的数据类型触发难以定位的异常。
+  if (!config || typeof config !== "object" || Array.isArray(config)) {
+    throw new Error("配置必须是有效对象");
+  }
+  const proxyCount = Array.isArray(config.proxies) ? config.proxies.length : 0;
+  const providers = config["proxy-providers"];
   const proxyProviderCount =
-    typeof config?.["proxy-providers"] === "object"
-      ? Object.keys(config["proxy-providers"]).length
+    providers && typeof providers === "object" && !Array.isArray(providers)
+      ? Object.keys(providers).length
       : 0;
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
@@ -109,32 +99,33 @@ function main(config) {
   // 2. 定义静态住宅 IP 节点，并直接绑定前置代理组
   const myStaticNode = {
     name: "🏠 静态住宅落地",
-    type: "http",
-    server: "166.141.100.13",
+    type: "socks5",
+    server: "xxx.xxx.xxx.xxx",
     port: 5782,
     username: "test",
     password: "12345678",
-    "skip-cert-verify": true,
-    // 核心改动：在这里指定 dialer-proxy，实现链式代理
+    // 当前使用普通 SOCKS5，不启用 TLS。
+    // 连接路径：本机 → 前置组选择的机场节点 → 住宅节点 → 目标网站。
     "dialer-proxy": entranceGroupName,
   };
 
-  // 3. 将静态住宅节点注入到 proxies 列表
-  if (!config.proxies) {
-    config.proxies = [];
-  }
-  config.proxies.push(myStaticNode);
+  // 3. 按名称替换注入，避免同一配置重复执行时添加同名住宅节点。
+  config.proxies = [
+    ...(Array.isArray(config.proxies) ? config.proxies : [])
+      .filter((proxy) => proxy.name !== myStaticNode.name),
+    myStaticNode,
+  ];
 
-  // 4. 修改 DNS 配置
-  config["dns"] = dnsConfig;
+  // 完整沿用订阅的 DNS 和 hosts，保留机场节点的本地解析及域名映射链路。
+  // 节点解析可能依赖本地 DNS，不在扩展脚本中替换解析服务器或追加 fallback。
 
-  // 5. 重新定义代理组
+  // 4. 定义代理组
   config["proxy-groups"] = [
     // 住宅 IP 专用选择组
     {
       ...groupBaseOption,
       name: "🔗 链式-住宅IP",
-      type: "url-test",
+      type: "select", // 住宅出口使用单节点选择组，不进行自动择优。
       proxies: [myStaticNode.name], // 此时连接该节点会自动经过 entranceGroupName
     },
     {
@@ -143,15 +134,18 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
     },
     {
       ...groupBaseAutoTest,
       name: "港台日新韩-自动",
+      lazy: false, // 仅核心前置组保持后台测速。
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$", // 机场组排除住宅节点，避免误选住宅及潜在的链式依赖环。
       filter:
-        "(广港|广台|广日|广新|广韩|广美|香港|HK|Hong Kong|🇭🇰|HongKong|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
+        "(广港|广台|广日|广新|广韩|香港|HK|Hong Kong|🇭🇰|HongKong|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
     },
     {
       ...groupBaseAutoTest,
@@ -159,8 +153,9 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter:
-        "(广台|广日|广新|广韩|广美|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
+        "(广台|广日|广新|广韩|台湾|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
     },
     {
       ...groupBaseAutoTest,
@@ -168,8 +163,9 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter:
-        "(广台|广日|广新|广韩|广美|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
+        "(广日|广新|广韩|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan|新加坡|SG|坡|狮城|🇸🇬|Singapore|韩国|KR|首尔|春川|🇰🇷|Korea)",
     },
     {
       ...groupBaseOption,
@@ -177,6 +173,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter: "(广港|香港|HK|Hong Kong|🇭🇰|HongKong)",
     },
     {
@@ -185,6 +182,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter: "(广台|台湾|台灣|TW|Tai Wan|🇹🇼|🇨🇳|TaiWan|Taiwan)",
     },
     {
@@ -193,6 +191,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter: "(广日|日本|JP|川日|东京|大阪|泉日|埼玉|沪日|深日|🇯🇵|Japan)",
     },
     {
@@ -201,6 +200,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter: "(广新|新加坡|SG|坡|狮城|🇸🇬|Singapore)",
     },
     {
@@ -209,6 +209,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter: "(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea)",
     },
     {
@@ -217,6 +218,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter:
         "(广美|美|USA|纽约|波特兰|达拉斯|俄勒|凤凰城|费利蒙|硅谷|拉斯|洛杉|圣何塞|圣克拉|西雅|芝加|🇺🇸|United States)",
     },
@@ -226,6 +228,7 @@ function main(config) {
       type: "url-test",
       proxies: [],
       "include-all": true,
+      "exclude-filter": "^🏠 静态住宅落地$",
       filter:
         "(波|柬|尼|也|克|比|尔|立|冰|秘|耳|利|埃|希|孟|芬|愛|澳|英|德|南|意|法|拿|墨|印|越|俄|瑞|智|荷|比|巴|沙|班|泰|德|烏|以|Australia|Konghwaguk)",
     },
@@ -272,7 +275,7 @@ function main(config) {
     },
   ];
 
-  // 6. 覆盖原配置中的规则
+  // 5. 统一设置分流规则集和规则，覆盖订阅中的同名配置字段。
   config["rule-providers"] = ruleProviders;
   config["rules"] = rules;
 
