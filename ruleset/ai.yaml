@@ -134,3 +134,7 @@ payload:
   - DOMAIN-SUFFIX,conman.org
   - DOMAIN-SUFFIX,bortzmeyer.org
   - DOMAIN-KEYWORD,ping0
+
+    # --- 国产国际版 ---
+  - DOMAIN-SUFFIX,qoder.com
+  - DOMAIN-SUFFIX,qoder.sh
