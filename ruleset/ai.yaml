@@ -137,6 +137,7 @@ payload:
   
   # --- 其他 ---
   - DOMAIN-SUFFIX,typesafe.ai
+    - DOMAIN-SUFFIX,jevai.org
   
   
     # --- 国产国际版 ---
