@@ -101,6 +101,7 @@ payload:
   - DOMAIN-SUFFIX,perplexity.ai
   - DOMAIN-SUFFIX,genspark.ai
   - DOMAIN-SUFFIX,meta.ai
+  - DOMAIN-SUFFIX,muse.ai
   - DOMAIN-SUFFIX,metademolab.com
   - DOMAIN-SUFFIX,poe.com
   - DOMAIN-SUFFIX,groq.com
