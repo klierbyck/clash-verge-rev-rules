@@ -140,6 +140,7 @@ payload:
   # --- 其他 ---
   - DOMAIN-SUFFIX,typesafe.ai
   - DOMAIN-SUFFIX,jevai.org
+  - DOMAIN-SUFFIX,skillsvc.cc
   
   
     # --- 国产国际版 ---
