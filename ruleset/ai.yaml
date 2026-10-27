@@ -96,14 +96,21 @@ payload:
   - DOMAIN-REGEX,midjourney.*
   - DOMAIN-KEYWORD,midjourney
 
-  # --- 其他主流 AI & 辅助服务 ---
-  - DOMAIN,www.perplexity.ai
-  - DOMAIN-SUFFIX,perplexity.ai
-  - DOMAIN-SUFFIX,genspark.ai
+  # --- META AI ---
   - DOMAIN-SUFFIX,meta.ai
   - DOMAIN-SUFFIX,meta.com
   - DOMAIN-SUFFIX,metademolab.com
   - DOMAIN-SUFFIX,muse.ai
+  - DOMAIN-SUFFIX,metaaivm.com
+  - DOMAIN-SUFFIX,metaaiusercontent.com
+  - DOMAIN-SUFFIX,fbsbx.com
+  - DOMAIN-SUFFIX,fbcdn.net
+  - DOMAIN-SUFFIX,facebook.com
+
+  # --- 其他主流 AI & 辅助服务 ---
+  - DOMAIN,www.perplexity.ai
+  - DOMAIN-SUFFIX,perplexity.ai
+  - DOMAIN-SUFFIX,genspark.ai
   - DOMAIN-SUFFIX,poe.com
   - DOMAIN-SUFFIX,groq.com
   - DOMAIN-SUFFIX,mistral.ai
