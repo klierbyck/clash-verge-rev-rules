@@ -10,6 +10,8 @@
 # PROCESS-NAME: 1
 # TOTAL: 33221
 payload:
+  - DOMAIN-SUFFIX,webshare.io
+  - DOMAIN-SUFFIX,linkcube.org
   - DOMAIN,1password.drift.click
   - DOMAIN,adobeereg.com
   - DOMAIN,angle.com.tw
