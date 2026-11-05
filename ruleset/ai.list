@@ -1,0 +1,171 @@
+# NAME: ai
+# Classical text rules. Updates append new entries only.
+# Existing entries keep their order, text, and group ownership.
+# Sources retain their original upstream attribution:
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Anthropic/Anthropic.list
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
+# https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/x-ai.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/cursor.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/augment-code.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/midjourney.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/kiro.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/windsurf.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/devin.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/perplexity.list
+# https://raw.githubusercontent.com/VPSDance/ai-proxy-rules/refs/heads/main/rules/loon/opencode.list
+DOMAIN,chat.openai.com
+DOMAIN,api.openai.com
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN,aistudio.google.com
+DOMAIN,gemini.google.com
+DOMAIN,bard.google.com
+DOMAIN,makersuite.google.com
+DOMAIN,generativelanguage.googleapis.com
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
+DOMAIN-SUFFIX,augmentcode.com
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-SUFFIX,mj-gallery.com
+DOMAIN-SUFFIX,discord.com
+DOMAIN-SUFFIX,discord.gg
+DOMAIN-SUFFIX,discordapp.com
+DOMAIN-SUFFIX,discordapp.net
+DOMAIN-SUFFIX,kiro.dev
+DOMAIN,q.us-east-1.amazonaws.com
+DOMAIN,codewhisperer.us-east-1.amazonaws.com
+DOMAIN-SUFFIX,windsurf.com
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,codeiumdata.com
+DOMAIN-SUFFIX,devin.ai
+DOMAIN-SUFFIX,cognition.ai
+DOMAIN-SUFFIX,cognition.com
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,metademolab.com
+DOMAIN-SUFFIX,metaaivm.com
+DOMAIN-SUFFIX,metaaiusercontent.com
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,genspark.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,mistral.ai
+DOMAIN-SUFFIX,arena.ai
+DOMAIN-SUFFIX,lmarena.ai
+DOMAIN-SUFFIX,nof1.ai
+DOMAIN-SUFFIX,lovable.dev
+DOMAIN-SUFFIX,deepwiki.com
+DOMAIN-SUFFIX,framelink.ai
+DOMAIN-SUFFIX,opencode.ai
+DOMAIN-SUFFIX,difyai.com
+DOMAIN-SUFFIX,modelcontextprotocol.io
+DOMAIN-SUFFIX,agnes-ai.com
+DOMAIN-SUFFIX,pavo-ai.work
+DOMAIN-SUFFIX,leonardo.ai
+DOMAIN-SUFFIX,typesafe.ai
+DOMAIN-SUFFIX,jevai.org
+DOMAIN-SUFFIX,skillsvc.cc
+DOMAIN-SUFFIX,qoder.com
+DOMAIN-SUFFIX,qoder.sh
+DOMAIN,browser-intake-datadoghq.com
+DOMAIN,chat.openai.com.cdn.cloudflare.net
+DOMAIN,openai-api.arkoselabs.com
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,production-openaicom-storage.azureedge.net
+DOMAIN,static.cloudflareinsights.com
+DOMAIN-SUFFIX,ai.com
+DOMAIN-SUFFIX,algolia.net
+DOMAIN-SUFFIX,api.statsig.com
+DOMAIN-SUFFIX,auth0.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,chatgpt.livekit.cloud
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,events.statsigapi.net
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,host.livekit.cloud
+DOMAIN-SUFFIX,identrust.com
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,observeit.net
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,openaicom.imgix.net
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,turn.livekit.cloud
+DOMAIN-KEYWORD,openai
+IP-CIDR,24.199.123.28/32,no-resolve
+IP-CIDR,64.23.132.171/32,no-resolve
+IP-ASN,20473,no-resolve
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN,cdn.usefathom.com
+DOMAIN,ai.google.dev
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+DOMAIN-SUFFIX,apis.google.com
+DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,developerprofiles
+DOMAIN-KEYWORD,generativelanguage
+DOMAIN,api.msn.com
+DOMAIN,api.statsig.com
+DOMAIN,assets.msn.com
+DOMAIN,copilot.microsoft.com
+DOMAIN,gateway.bingviz.microsoft.net
+DOMAIN,gateway.bingviz.microsoftapp.net
+DOMAIN,in.appcenter.ms
+DOMAIN,location.microsoft.com
+DOMAIN,odc.officeapps.live.com
+DOMAIN,r.bing.com
+DOMAIN,self.events.data.microsoft.com
+DOMAIN,services.bingapis.com
+DOMAIN,sydney.bing.com
+DOMAIN,www.bing.com
+DOMAIN-SUFFIX,api.microsoftapp.net
+DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
+DOMAIN-SUFFIX,challenges.cloudflare.com
+DOMAIN-SUFFIX,edgeservices.bing.com
+DOMAIN-KEYWORD,openaicom-api
+IP-ASN,14061,no-resolve
+DOMAIN-SUFFIX,grok.x.com
+DOMAIN,api.cursor.com
+DOMAIN,repo49.cursor.com
+DOMAIN-SUFFIX,q.eu-central-1.amazonaws.com
+PROCESS-NAME,Cursor
+PROCESS-NAME,Cursor.exe
+PROCESS-NAME,cursor
+PROCESS-NAME,Augment
+PROCESS-NAME,Augment.exe
+PROCESS-NAME,augment
+DOMAIN-SUFFIX,q.us-east-1.amazonaws.com
+PROCESS-NAME,Windsurf
+PROCESS-NAME,Windsurf.exe
+PROCESS-NAME,windsurf
+DOMAIN-SUFFIX,grokipedia.com
+DOMAIN-SUFFIX,cursor-cdn.com
+DOMAIN-SUFFIX,cursorvm.com
+DOMAIN-SUFFIX,windsurf.build
+DOMAIN-SUFFIX,meta.com
+DOMAIN-SUFFIX,muse.ai
+DOMAIN,ppl-ai-file-upload.s3.amazonaws.com
+DOMAIN,pplx-res.cloudinary.com
+DOMAIN-SUFFIX,perplexity.com
+DOMAIN-SUFFIX,pplx.ai

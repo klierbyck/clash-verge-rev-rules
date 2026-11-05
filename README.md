@@ -4,22 +4,35 @@
 
 # 说明
 
-## 项目目录中有两个配置文件，分别是script_http（线上分流规则集）和script_local(本地分流规则集，需要下载到本地使用)，建议先试用线上分流规则集，熟练后再使用本地分流规则集自定义属于自己的规则集
+## 项目提供原版规则和 .list 规则两种使用方式，每种均有线上、本地两个脚本，四个脚本任选一个使用，不要合并
+
+- 原版：[`script_http.js`](./script_http.js) 使用线上规则，[`script_local.js`](./script_local.js) 使用本地规则，保留原有规则配置和分组。
+- `.list` 版：[`script_http_proxy_rules.js`](./script_http_proxy_rules.js) 使用线上 `.list` 规则，[`script_local_proxy_rules.js`](./script_local_proxy_rules.js) 使用本地 `.list` 规则。
+
+建议先试用线上规则，熟练后再使用本地规则自定义属于自己的规则集。
 
 ## 打开客户端->点击订阅->右击全局扩展脚本->编辑文件->将项目中的script_xxx文件内容复制到编辑框中，然后点击保存即可
 
-## 若使用script_http则不需要任何操作即可开启你的分流之旅
+## 若使用线上规则，原版选择 script_http.js，.list 版选择 script_http_proxy_rules.js；保存扩展脚本后由客户端下载规则，不需要手动复制规则文件
 
 ![预览](./img/img1.png)
 
-## 若使用script_local将项目中的ruleset目录及所有文件复制到配置目录
+## 若使用本地规则，原版选择 script_local.js，.list 版选择 script_local_proxy_rules.js，并按对应方式复制规则文件
+
+- 原版：将项目中的 `ruleset` 目录复制到 Clash 实际配置目录下，保留目录层级，供 `script_local.js` 读取原有五个规则文件。
+- `.list` 版：将项目 `ruleset` 目录下的 `ai.list`、`social.list`、`common.list`、`global.list` 复制到 Clash 实际配置目录下的 `ruleset` 目录中。
+
+本地路径以所选脚本中 `ruleProviders` 的 `path` 为准，不能只把规则文件留在项目目录。
 
 ![预览](./img/img2.png)
 ![预览](./img/img3.png)
 
 # 使用
 
-## 点击代理->规则->找到对应分组，选择对应规则即可（目前有AI、Github、Telegram、流媒体、国外五个规则集）记得国内选DIRECT
+## 点击代理->规则->按所选脚本选择业务分组的出口；未匹配流量进入 ➡️ 国内组，默认选择 DIRECT
+
+- 原版：AI、GitHub、Telegram、流媒体、国外五个业务分组。
+- `.list` 版：AI、社交账号、日常应用、国外四个业务分组。
 
 ![预览](./img/img4.png)
 

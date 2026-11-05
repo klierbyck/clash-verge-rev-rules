@@ -1,0 +1,103 @@
+name: Weekly and custom Clash rule sync
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ruleset/custom_global.list"
+  schedule:
+    # Monday 03:17 UTC / 11:17 Asia/Shanghai; GitHub may delay scheduled runs.
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-rule-sync-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Sync custom additions, edits, and deletions
+        if: github.event_name == 'push'
+        run: python -B scripts/sync-global-rules.py --custom-only
+
+      - name: Download, validate, and append new upstream rules
+        if: github.event_name != 'push'
+        run: python -B scripts/sync-global-rules.py
+
+      - name: Publish changed rule files through the GitHub API
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('node:fs');
+            const crypto = require('node:crypto');
+            const repo = context.repo;
+            const branch = context.ref.replace(/^refs\/heads\//, '');
+            const names = context.eventName === 'push'
+              ? ['global']
+              : ['ai', 'social', 'common', 'global'];
+            const paths = names.map(name => `ruleset/${name}.list`);
+            const updates = [];
+
+            for (const path of paths) {
+              const content = fs.readFileSync(path);
+              let current;
+              try {
+                const { data } = await github.rest.repos.getContent({
+                  ...repo, path, ref: context.sha,
+                  headers: { accept: 'application/vnd.github.object+json' },
+                });
+                if (Array.isArray(data) || data.type !== 'file') {
+                  throw new Error(`${path} is not a regular file`);
+                }
+                current = data;
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+              // GitHub omits inline contents above 1 MiB; compare blob hashes instead.
+              const sha = crypto.createHash('sha1')
+                .update(`blob ${content.length}\0`)
+                .update(content)
+                .digest('hex');
+              if (!current || current.sha !== sha) {
+                updates.push({ path, content, previousSha: current?.sha });
+              }
+            }
+
+            if (updates.length === 0) {
+              core.info('Rule files are unchanged; nothing to publish.');
+              return;
+            }
+
+            let expectedHead = context.sha;
+            for (const { path, content, previousSha } of updates) {
+              const { data: head } = await github.rest.repos.getBranch({ ...repo, branch });
+              if (head.commit.sha !== expectedHead) {
+                throw new Error('Branch advanced during sync; refusing to publish stale rules.');
+              }
+              const { data } = await github.rest.repos.createOrUpdateFileContents({
+                ...repo,
+                branch,
+                path,
+                message: `chore: sync rules in ${path}`,
+                content: content.toString('base64'),
+                ...(previousSha ? { sha: previousSha } : {}),
+              });
+              expectedHead = data.commit.sha;
+              core.info(`Published ${path}`);
+            }
