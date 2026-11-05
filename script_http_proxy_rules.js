@@ -104,7 +104,9 @@ function main(config) {
   ];
   const residentialRegions = residentialConfigs.map(({ region }) => region);
   if (
-    residentialRegions.some((region) => typeof region !== "string" || !region.trim()) ||
+    residentialRegions.some(
+      (region) => typeof region !== "string" || !region.trim(),
+    ) ||
     new Set(residentialRegions).size !== residentialRegions.length
   ) {
     throw new Error("住宅配置中的 region 必须是非空且唯一的名称");
@@ -117,13 +119,16 @@ function main(config) {
     type: "socks5",
     "dialer-proxy": entranceGroupName,
   }));
-  const residentialGroupNames = residentialRegions.map((region) => `🔗 链式-住宅IP-${region}`);
+  const residentialGroupNames = residentialRegions.map(
+    (region) => `🔗 链式-住宅IP-${region}`,
+  );
   // 此命名前缀由脚本管理，同时排除旧单住宅节点，避免重复执行或删减地区后残留节点。
   const residentialExcludeFilter = "^🏠 静态住宅落地(?:-.*)?$";
   const residentialNamePattern = new RegExp(residentialExcludeFilter);
   config.proxies = [
-    ...(Array.isArray(config.proxies) ? config.proxies : [])
-      .filter((proxy) => !residentialNamePattern.test(proxy.name)),
+    ...(Array.isArray(config.proxies) ? config.proxies : []).filter(
+      (proxy) => !residentialNamePattern.test(proxy.name),
+    ),
     ...residentialNodes,
   ];
 
@@ -246,31 +251,49 @@ function main(config) {
       ...groupBaseOption,
       name: "👽 AI",
       type: "select",
-      proxies: [...residentialGroupNames, "日新韩-自动", "美国-自动"],
+      proxies: [
+        ...residentialGroupNames,
+        "美国-自动",
+        "台湾-自动",
+        "日本-自动",
+        "台日新韩-自动",
+      ],
     },
     {
       ...groupBaseOption,
       name: "💬 社交账号",
       type: "select",
-      proxies: [...residentialGroupNames, "美国-自动", "日本-自动", "新加坡-自动", "台湾-自动", "香港-自动"],
+      proxies: [
+        ...residentialGroupNames,
+        "美国-自动",
+        "台湾-自动",
+        "日本-自动",
+        "台日新韩-自动",
+        "港台日新韩-自动",
+      ],
     },
     {
       ...groupBaseOption,
       name: "📦 日常应用",
       type: "select",
-      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动", ...residentialGroupNames],
+      proxies: [
+        ...residentialGroupNames,
+        "港台日新韩-自动",
+        "台日新韩-自动",
+        "美国-自动",
+      ],
     },
     {
       ...groupBaseOption,
       name: "🌍 国外",
       type: "select",
-      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动", ...residentialGroupNames],
+      proxies: ["港台日新韩-自动", "日新韩-自动", "美国-自动"],
     },
     {
       ...groupBaseOption,
       name: "➡️ 国内",
       type: "select",
-      proxies: ["DIRECT", "所有-自动"],
+      proxies: ["DIRECT"],
     },
   ];
 
