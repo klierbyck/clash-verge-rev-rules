@@ -57,7 +57,6 @@ const ruleProviders = {
 
 // 直连例外必须先于规则集，具体业务先于国外通用；国内组仅作兜底，不判断目标地区。
 const rules = [
-  "DOMAIN-SUFFIX,nightyu.com,DIRECT",
   "RULE-SET,ai,👽 AI",
   "RULE-SET,social,💬 社交账号",
   "RULE-SET,common,📦 日常应用",
