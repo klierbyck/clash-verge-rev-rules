@@ -18,6 +18,8 @@
 # https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list
 # https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
 IP-CIDR,199.16.158.0/24,no-resolve
+DOMAIN-SUFFIX,arena.ai
+DOMAIN-SUFFIX,lmarena.ai
 DOMAIN-SUFFIX,ggpht.cn
 DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,googlevideo.com
