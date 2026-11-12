@@ -122,7 +122,9 @@ DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
 DOMAIN-SUFFIX,apis.google.com
 DOMAIN-SUFFIX,google.com
 DOMAIN-SUFFIX,googleapis.com
-DOMAIN-KEYWORD,colab
+DOMAIN-KEYWORD,goog
+DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,googleapis
 DOMAIN-KEYWORD,developerprofiles
 DOMAIN-KEYWORD,generativelanguage
 DOMAIN,api.msn.com
